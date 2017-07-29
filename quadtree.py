@@ -1,6 +1,6 @@
 class QuadTreeNode:
     #const
-    MAX_VALUES = 2000
+    MAX_VALUES = 1500
 
     def size(self):
         if self.root:
@@ -16,10 +16,11 @@ class QuadTreeNode:
             self.values.append(val)
             if len(self.values) >= self.MAX_VALUES:
                 self.root = False
-                print('splitting root node')
+                #print('splitting root node')
                 self.splitRootNode()
             else:
-                print('apparently ' + str(len(self.values)) + ' < ' + str(self.MAX_VALUES))
+                pass
+                #print('apparently ' + str(len(self.values)) + ' < ' + str(self.MAX_VALUES))
         else:
             if float(val['lon']) < self.x_mid:
                 if float(val['lat']) < self.y_mid:
@@ -46,7 +47,7 @@ class QuadTreeNode:
 
     def findVals(self,x, y):
         if self.root:
-            return values[:]
+            return self.values[:]
         else:
             if x < self.x_mid:
                 if y < self.y_mid:
