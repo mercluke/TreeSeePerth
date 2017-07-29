@@ -32,6 +32,21 @@ class QuadTreeNode:
                         self.children[3].addVal(val)
             del self.values[:]
 
+    def findVals(x, y):
+        if self.isRoot():
+            return values[:]
+        else:
+            if x < x_mid:
+                if y < y_mid:
+                    return self.children[0].findVals(x,y)
+                else:
+                    return self.children[2].findVals(x,y)
+            else:
+                if y < y_mid:
+                    return self.children[1].findVals(x,y)
+                else:
+                    return self.children[3].findVals(x,y)
+
     def  __init__(self, xmin, xmax, ymin, ymax):
         self.x_min_bound = xmin
         self.x_max_bound = xmax
