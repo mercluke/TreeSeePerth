@@ -1,0 +1,43 @@
+class SiteRequest
+{
+  <!DOCTYPE html>
+  <html>
+  <body>
+
+  <div id="demo">
+  <h1>Hey Merc</h1>
+  <button type="button"
+  onclick="makeRequest()">fml</button>
+  </div>
+
+  <script>
+  makeRequest = function()
+  {
+    // Create the XMLHttpRequest object to exchange data with a server
+    // Note that the web page and XML file must be located on the same server
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "hello.txt", true);
+
+    xhr.onload = function(e)
+    {
+      if(xhr.readyState === 4)
+      {
+        if(xhr.status === 200)
+        {
+          console.log(xhr.responseText);
+        }
+        else
+        {
+          console.error(xhr.statusText);
+        }
+      }
+    };
+
+    xhr.onerror = function(e)
+    {
+      console.error(xhr.statusText);
+    };
+
+    xhr.send(null);
+}
+</script>
