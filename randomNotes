@@ -1,0 +1,12 @@
+#Use follwing code to load pickled data into the quad tree
+from quadtree import QuadTree
+import cPickle
+dataset = cPickle.load(open('pickleddata.p', 'rb'))
+qt = QuadTree(float(115.5),float(116),float(-32.2),float(-31.5))
+for tree in dataset:
+  qt.addVal(tree)
+
+#use following code to just load the pre-pickled quadtree
+from quadtree import QuadTree
+import cPickle
+qt = cPickle.load(open('pickledquadtree.p', 'rb'))
